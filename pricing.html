@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HouseCall — Pricing</title>
+  <meta name="description" content="Pricing for Airbnb guest-ready caretaking, residential and body corporate services in Ballarat. Circuit-based visits, no guest contact.">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script src="shared.js" defer></script>
+</head>
+<body onload="isActive('pricing.html')">
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="navin wrap">
+      <div class="brand"><img src="assets/logo.svg" alt="HouseCall logo"><span>HouseCall</span></div>
+      <div class="navlinks">
+        <a href="index.html">Home</a><a href="checklist.html">Templates</a><a href="addons.html">Add-ons</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a class="btn primary" href="contact.html">Enquiry</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="airbnb">
+      <h2>Airbnb Core</h2>
+      <p class="sub">Circuit-based weekly caretaking with same-night photo report. <strong>No guest contact. No bed-making.</strong></p>
+      <div class="cards">
+        <div class="card">
+          <h3>Weekly</h3>
+          <div class="price">$75 / week</div>
+          <ul>
+            <li>Restock from central cupboard (TP, hand wash, paper towel, dish tabs)</li>
+            <li>Bins to curb / returned if due</li>
+            <li>Cleaning check (visual, post-clean) + linen stock placed (no bed-making)</li>
+            <li>Windows/doors secured; quick exterior sweep</li>
+            <li>Same-night photos via WhatsApp or email</li>
+          </ul>
+          <p class="note">Billed $300 on the 1st (in advance). <strong>Linen movement (to/from cupboard) available as an add-on.</strong></p>
+        </div>
+        <div class="card">
+          <h3>Emergency call-out</h3>
+          <div class="price">$140</div>
+          <p class="note">Storms, alarms, urgent checks. Availability-based; charged at month end.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="residential">
+      <h2>Apartments & Residential</h2>
+      <p class="sub">Peace-of-mind checks while you’re away — part of our regular circuit.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Fortnightly</h3>
+          <div class="price">$60 / visit</div>
+          <ul>
+            <li>Exterior sweep / cobwebs</li>
+            <li>Garden/grounds quick report</li>
+            <li>Bins check (to curb / returned if due)</li>
+            <li>Windows/doors secured</li>
+            <li>Photo summary via WhatsApp or email</li>
+          </ul>
+          <p class="note">Typical: $120 monthly (2 visits).</p>
+        </div>
+        <div class="card">
+          <h3>Monthly</h3>
+          <div class="price">$70 / visit</div>
+          <ul>
+            <li>Exterior sweep / cobwebs</li>
+            <li>Garden/grounds quick report</li>
+            <li>Bins check</li>
+            <li>Windows/doors secured</li>
+            <li>Photo summary</li>
+          </ul>
+          <p class="note">Ideal for overseas trips or long absences.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="bodycorp">
+      <h2>Body Corporate</h2>
+      <p class="sub"><strong>Why HouseCall?</strong> Quick on-the-ground presence, same-night WhatsApp photos, monthly roll-up report. <strong>No guest/tenant contact.</strong></p>
+      <div class="cards">
+        <div class="card">
+          <h3>Weekly</h3>
+          <div class="price">from $95 / week</div>
+          <ul>
+            <li>Lighting spot-checks (corridors/stairs)</li>
+            <li>Stairs & foyers walk-through (hazards & presentation)</li>
+            <li>Grounds/bins area tidy report</li>
+            <li>Security (entry door latch/closer, mail room)</li>
+            <li>Incident log + graffiti/damage photos</li>
+          </ul>
+          <p class="note">Monthly summary emailed to managers.</p>
+        </div>
+        <div class="card">
+          <h3>Fortnightly</h3>
+          <div class="price">from $65 / visit</div>
+          <p class="note">Scaled for smaller buildings; same bullet checks as Weekly.</p>
+        </div>
+        <div class="card">
+          <h3>Monthly</h3>
+          <div class="price">from $85 / visit</div>
+          <p class="note">Budget-friendly oversight; same bullet checks condensed.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="actions" style="margin:12px 0 24px">
+      <a class="btn primary" href="contact.html">Make an enquiry</a>
+      <a class="btn ghost" target="_blank" href="mailto:rjw.basalt@gmail.com?subject=HouseCall%20Pricing%20question">Email us</a>
+    </div>
+  </main>
+
+  <footer class="wrap">
+    <div>© <span id="year4"></span> HouseCall • Fully insured</div>
+    <div style="display:flex;gap:12px"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Enquiry</a></div>
+  </footer>
+  <script>document.getElementById('year4').textContent=new Date().getFullYear()</script>
+</body>
+</html>

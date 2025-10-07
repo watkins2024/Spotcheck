@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HouseCall — Templates</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="shared.js" defer></script>
+  <style>
+    /* small local extras for tabs */
+    .tabs{display:flex;gap:8px;margin:12px 0 6px}
+    .tab{padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;font-weight:800}
+    .tab[aria-selected="true"]{background:var(--accent);color:#fff;border-color:transparent}
+    .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    @media (max-width: 960px){.grid2{grid-template-columns:1fr}}
+    .hint{font-size:14px;color:var(--muted)}
+  </style>
+</head>
+<body onload="isActive('checklist.html')">
+  <div class="nav">
+    <div class="navin wrap">
+      <div class="brand"><div class="logo">HC</div> HouseCall</div>
+      <div class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="checklist.html">Templates</a>
+        <a href="addons.html">Add-ons</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a class="btn primary" href="contact.html">Make an enquiry</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section>
+      <h2>Templates (Guest-Ready & Building Checks)</h2>
+      <p class="sub">
+        Pick a preset below, tick what you need, and add your own notes. We cap to 10 items for a sharp weekly/fortnightly focus.
+        <br><span class="hint">Need something else? Extra checks are welcome — just send them via <a id="preWa" target="_blank" href="#">WhatsApp</a> before the visit.</span>
+      </p>
+
+      <!-- Tabs -->
+      <div class="tabs" role="tablist" aria-label="Template type">
+        <button class="tab" role="tab" id="tab-airbnb" aria-selected="true" aria-controls="panel-airbnb" onclick="switchTab('airbnb')">Airbnb Core</button>
+        <button class="tab" role="tab" id="tab-body" aria-selected="false" aria-controls="panel-body" onclick="switchTab('body')">Apartments / Body Corporate</button>
+      </div>
+
+      <!-- Airbnb Core -->
+      <div id="panel-airbnb" role="tabpanel" aria-labelledby="tab-airbnb">
+        <div class="grid2">
+          <div class="card">
+            <h3>Entrance & Exterior</h3>
+            <label><input type="checkbox" name="air" value="Exterior sweep & quick cobweb clear (porch/paths)" checked> Exterior sweep & quick cobweb clear (porch/paths)</label>
+            <label><input type="checkbox" name="air" value="Gate/letterbox checked; parcels collected" checked> Gate/letterbox checked; parcels collected</label>
+            <label><input type="checkbox" name="air" value="Outdoor lights on/working (as requested)"> Outdoor lights on/working (as requested)</label>
+          </div>
+          <div class="card">
+            <h3>Guest-Ready Restock (Central Cupboard)</h3>
+            <label><input type="checkbox" name="air" value="Restock from central cupboard (TP, hand wash, paper towel, dish tabs)" checked> Restock from central cupboard (TP, hand wash, paper towel, dish tabs)</label>
+            <label><input type="checkbox" name="air" value="Welcome items present (as supplied)"> Welcome items present (as supplied)</label>
+            <label><input type="checkbox" name="air" value="Consumables reconciled (at cost)"> Consumables reconciled (at cost)</label>
+          </div>
+          <div class="card">
+            <h3>Kitchen & Utilities</h3>
+            <label><input type="checkbox" name="air" value="Appliance glance (fridge hum, stovetop/oven off)" checked> Appliance glance (fridge hum, stovetop/oven off)</label>
+            <label><input type="checkbox" name="air" value="Bins to curb or returned (if due)" checked> Bins to curb or returned (if due)</label>
+            <label><input type="checkbox" name="air" value="Hot water / ventilation spot-check"> Hot water / ventilation spot-check</label>
+          </div>
+          <div class="card">
+            <h3>Clean & Presentation (visual)</h3>
+            <label><input type="checkbox" name="air" value="Cleaning check (visual, post-clean) — surfaces & floors look guest-ready" checked> Cleaning check (visual, post-clean) — surfaces & floors look guest-ready</label>
+            <label><input type="checkbox" name="air" value="Linens present; beds made (visual only)" checked> Linens present; beds made (visual only)</label>
+            <label><input type="checkbox" name="air" value="Heater/AC set to arrival comfort (as requested)"> Heater/AC set to arrival comfort (as requested)</label>
+          </div>
+          <div class="card">
+            <h3>Safety & Secure</h3>
+            <label><input type="checkbox" name="air" value="Windows and doors latched / property secured" checked> Windows and doors latched / property secured</label>
+            <label><input type="checkbox" name="air" value="Smoke alarms present (beep test if agreed)"> Smoke alarms present (beep test if agreed)</label>
+            <label><input type="checkbox" name="air" value="Pest signs check (droppings/webs)"> Pest signs check (droppings/webs)</label>
+          </div>
+          <div class="card">
+            <h3>Your extras</h3>
+            <textarea id="customAir" placeholder="Add up to 4 items, separated by commas or new lines"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Apartments / Body Corporate -->
+      <div id="panel-body" role="tabpanel" aria-labelledby="tab-body" hidden>
+        <div class="grid2">
+          <div class="card">
+            <h3>Stairs, Foyers & Common Areas</h3>
+            <label><input type="checkbox" name="body" value="Foyers/stairs walk-through; clear of debris & hazards" checked> Foyers/stairs walk-through; clear of debris & hazards</label>
+            <label><input type="checkbox" name="body" value="Entry mats & glass doors presentable (visual)"> Entry mats & glass doors presentable (visual)</label>
+            <label><input type="checkbox" name="body" value="Signage intact; noticeboard up to date"> Signage intact; noticeboard up to date</label>
+          </div>
+          <div class="card">
+            <h3>Lighting & Safety</h3>
+            <label><input type="checkbox" name="body" value="Corridor/stair lighting operating (spot-check)" checked> Corridor/stair lighting operating (spot-check)</label>
+            <label><input type="checkbox" name="body" value="Emergency exits & paths clear (visual)" checked> Emergency exits & paths clear (visual)</label>
+            <label><input type="checkbox" name="body" value="Intercom/door release test (as arranged)"> Intercom/door release test (as arranged)</label>
+          </div>
+          <div class="card">
+            <h3>Grounds & Bins</h3>
+            <label><input type="checkbox" name="body" value="Garden/grounds quick report (tidy, hazards, vandalism)" checked> Garden/grounds quick report (tidy, hazards, vandalism)</label>
+            <label><input type="checkbox" name="body" value="Bins area tidy; collection schedule noted" checked> Bins area tidy; collection schedule noted</label>
+            <label><input type="checkbox" name="body" value="Graffiti / damage flag with photos"> Graffiti / damage flag with photos</label>
+          </div>
+          <div class="card">
+            <h3>Security</h3>
+            <label><input type="checkbox" name="body" value="Entry doors latch/close correctly; closer speed reasonable" checked> Entry doors latch/close correctly; closer speed reasonable</label>
+            <label><input type="checkbox" name="body" value="Mail room tidy; parcels not obstructing"> Mail room tidy; parcels not obstructing</label>
+            <label><input type="checkbox" name="body" value="Unauthorised access signs evident; CCTV notice present (if applicable)"> Unauthorised access signs evident; CCTV notice present (if applicable)</label>
+          </div>
+          <div class="card">
+            <h3>Incidents & Reporting</h3>
+            <label><input type="checkbox" name="body" value="Incident log updated (issues, photos, timestamps)" checked> Incident log updated (issues, photos, timestamps)</label>
+            <label><input type="checkbox" name="body" value="Monthly roll-up summary emailed (for managers)"> Monthly roll-up summary emailed (for managers)</label>
+            <label><input type="checkbox" name="body" value="Follow-ups noted for trades (as approved)"> Follow-ups noted for trades (as approved)</label>
+          </div>
+          <div class="card">
+            <h3>Your extras</h3>
+            <textarea id="customBody" placeholder="Add up to 4 items, separated by commas or new lines"></textarea>
+          </div>
+        </div>
+
+        <label>Frequency</label>
+        <select id="freqBody">
+          <option value="Weekly">Weekly</option>
+          <option value="Fortnightly" selected>Fortnightly</option>
+          <option value="Monthly">Monthly</option>
+        </select>
+      </div>
+
+      <!-- Controls shared -->
+      <label style="margin-top:12px">Visit window</label>
+      <select id="window">
+        <option value="Tue–Thu 5–9pm">Tue–Thu 5–9pm (3-night window)</option>
+        <option value="Thursday evening">Thursday evening (preferred)</option>
+        <option value="Fortnightly (Thu evening)">Fortnightly (Thu evening)</option>
+      </select>
+
+      <div class="actions">
+        <button class="btn primary" type="button" onclick="generateTemplate()">Generate template</button>
+        <button class="btn ghost" type="button" onclick="copyPreview()">Copy to clipboard</button>
+        <a id="waSend" class="btn primary" style="display:none" target="_blank"><img src="assets/whatsapp.jpg" alt=""> Send via WhatsApp</a>
+        <a id="emailSend" class="btn ghost" style="display:none" target="_blank">Send via email</a>
+      </div>
+
+      <label>Preview</label>
+      <textarea id="preview" readonly placeholder="Your template will appear here..."></textarea>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div>© <span id="year2"></span> HouseCall</div>
+    <div style="display:flex;gap:12px"><a href="index.html">Home</a><a href="contact.html">Enquiry</a></div>
+  </footer>
+
+  <script>
+    document.getElementById('year2').textContent = new Date().getFullYear();
+    // Pre-fill WhatsApp link for “extra checks welcome”
+    document.getElementById('preWa').href = waLink('Additional checks I would like to add:');
+
+    function switchTab(which){
+      const isAir = which === 'airbnb';
+      document.getElementById('panel-airbnb').hidden = !isAir;
+      document.getElementById('panel-body').hidden = isAir;
+      document.getElementById('tab-airbnb').setAttribute('aria-selected', isAir ? 'true' : 'false');
+      document.getElementById('tab-body').setAttribute('aria-selected', isAir ? 'false' : 'true');
+      // reset preview/buttons
+      document.getElementById('preview').value='';
+      document.getElementById('waSend').style.display='none';
+      document.getElementById('emailSend').style.display='none';
+    }
+
+    function collectChecked(nameAttr){
+      return [...document.querySelectorAll(`input[name="${nameAttr}"]:checked`)].map(x=>`• ${x.value}`);
+    }
+
+    function addCustom(textareaId, arr){
+      const raw = document.getElementById(textareaId).value.trim();
+      if(!raw) return;
+      raw.split(/\n|,/).map(s=>s.trim()).filter(Boolean).forEach(t=>arr.push(`• ${t}`));
+    }
+
+    function generateTemplate(){
+      const isAir = document.getElementById('panel-airbnb').hidden === false;
+      const windowSel = document.getElementById('window').value;
+      let lines = [];
+      if(isAir){
+        lines = collectChecked('air');
+        addCustom('customAir', lines);
+      }else{
+        lines = collectChecked('body');
+        addCustom('customBody', lines);
+        const freq = document.getElementById('freqBody').value;
+        lines.unshift(`• Frequency: ${freq}`);
+      }
+      const top = lines.slice(0,10);
+      const header = isAir ? 'HOUSECALL — Airbnb Guest-Ready Template' : 'HOUSECALL — Apartments / Body Corporate Template';
+      const text = `${header}\nVisit window: ${windowSel}\n\n${top.join('\n')}\n\nReport: Photos + notes sent same night (WhatsApp/email).\nNote: Additional checks are welcome if sent via WhatsApp prior to the visit.`;
+
+      document.getElementById('preview').value = text;
+      const wa = document.getElementById('waSend');
+      const em = document.getElementById('emailSend');
+      wa.href = waLink(text);
+      em.href = mailtoLink('Checklist template', text);
+      wa.style.display='inline-flex';
+      em.style.display='inline-flex';
+    }
+
+    function copyPreview(){
+      const p = document.getElementById('preview'); p.select(); document.execCommand('copy');
+    }
+  </script>
+</body>
+</html>

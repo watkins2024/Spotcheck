@@ -1,0 +1,85 @@
+:root{
+  --bg:#f8fafc; --text:#0f172a; --muted:#64748b; --line:#e5e7eb;
+  --surface:#ffffff; --surface-2:#f1f5f9;
+  --accent:#2563eb; --accent-strong:#1d4ed8; --accent-ghost:#dbeafe;
+  --radius:16px; --shadow:0 12px 28px rgba(2,6,23,.08)
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; color:var(--text); background:var(--bg)}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1120px;margin:0 auto;padding:24px}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.9);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+.navin{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 24px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800}
+.logo{width:38px;height:38px;border-radius:12px;background:var(--accent);display:grid;place-items:center;color:#fff;font-weight:900}
+.navlinks{display:flex;gap:16px;align-items:center}
+.navlinks a.active{color:var(--accent-strong);font-weight:900}
+.header-badge{background:#d1fae5;color:#065f46;font-size:14px;padding:4px 10px;border-radius:999px;margin-left:8px;font-weight:600}
+
+/* Hero full screen */
+header.hero-full{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  position:relative;
+  overflow:hidden;
+  color:#fff;
+  text-align:left;
+  background:#0b1220; /* fallback if image missing */
+}
+header.hero-full .bg{
+  position:absolute;
+  inset:0;
+}
+header.hero-full .bg img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 20%; /* keep top dark area in view */
+}
+header.hero-full .overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(rgba(15,23,42,.72), rgba(15,23,42,.72));
+}
+.hero-inner{position:relative; z-index:1; padding:32px}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;background:var(--accent-ghost);color:#1e40af;padding:6px 12px;border-radius:999px;font-weight:700;border:1px solid #bfdbfe}
+h1{font-size:clamp(30px,5vw,58px);line-height:1.06;margin:16px 0}
+.lead{max-width:720px;font-size:18px;color:#f1f5f9}
+.bullets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px;max-width:720px}
+.pill{display:inline-flex;align-items:center;gap:8px;background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe;padding:8px 12px;border-radius:999px;font-weight:700;font-size:14px}
+
+/* Buttons */
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 18px;border-radius:14px;border:1px solid transparent;font-weight:800;cursor:pointer;box-shadow:var(--shadow);transition:transform .06s ease, box-shadow .18s ease, background .2s}
+.btn img{width:20px;height:20px}
+.primary{background:var(--accent);color:#fff}
+.primary:hover{transform:translateY(-1px);box-shadow:0 16px 32px rgba(2,6,23,.12);background:var(--accent-strong)}
+.ghost{background:#fff;color:var(--accent-strong);border-color:#bfdbfe}
+
+/* Sections */
+section{padding:48px 24px}
+h2{font-size:clamp(24px,3.2vw,36px);margin:0 0 10px}
+.sub{color:var(--muted);margin:0 0 18px;font-size:16px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);padding:18px;border-radius:var(--radius)}
+.price{font-weight:900;color:#0f172a}
+.note{color:var(--muted)}
+
+/* Forms */
+.form{background:var(--surface);border:1px solid var(--line);padding:18px;border-radius:var(--radius);display:grid;gap:12px;max-width:860px}
+.form label{font-weight:700}
+.form input,.form select,.form textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #e2e8f0;background:#fff;color:#0f172a}
+.form small{color:var(--muted)}
+
+/* Footer */
+footer{padding:24px;border-top:1px solid var(--line);color:var(--muted);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+/* Responsive */
+@media (max-width: 960px){
+  .bullets{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+}

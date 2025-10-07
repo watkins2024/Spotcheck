@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HouseCall — FAQ</title>
+  <meta name="description" content="Answers about cleaning, insurance, payments, scheduling and what we do and don’t do. No guest contact, no bed-making.">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script src="shared.js" defer></script>
+</head>
+<body onload="isActive('faq.html')">
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="navin wrap">
+      <div class="brand"><img src="assets/logo.svg" alt="HouseCall logo"><span>HouseCall</span></div>
+      <div class="navlinks">
+        <a href="index.html">Home</a><a href="checklist.html">Templates</a><a href="addons.html">Add-ons</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a class="btn primary" href="contact.html">Enquiry</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section>
+      <h2>Frequently Asked Questions</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Do you contact guests?</h3>
+          <p>No. We don’t communicate with guests and we don’t take guest calls. Communication is with owners/managers via WhatsApp or email only.</p>
+        </div>
+        <div class="card">
+          <h3>Do you make beds?</h3>
+          <p>No. We can <strong>move linen</strong> to/from a central cupboard, but we don’t make beds.</p>
+        </div>
+        <div class="card">
+          <h3>Are you insured?</h3>
+          <p>Yes — fully insured. See our <a href="assets/docs/insurance.pdf" target="_blank">insurance certificate</a>.</p>
+        </div>
+        <div class="card">
+          <h3>How do I pay?</h3>
+          <p>Airbnb Core is billed monthly in advance on the 1st. Add-ons and emergency call-outs are charged at month end.</p>
+        </div>
+        <div class="card">
+          <h3>How is scheduling handled?</h3>
+          <p>We run a <strong>circuit</strong> Tue–Thu 5–9pm. Your visit happens within that window; we’ll advise any changes in advance.</p>
+        </div>
+        <div class="card">
+          <h3>Do you clean?</h3>
+          <p>No — we’re caretaking: security, readiness and reporting. We do quick exterior tidy (sweep/cobwebs) and visual cleaning checks. We also do resupplies, emergency one off visits and a little extra every time according to your wishes</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div>© <span id="yearFaq"></span> HouseCall</div>
+    <div style="display:flex;gap:12px"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Enquiry</a></div>
+  </footer>
+  <script>document.getElementById('yearFaq').textContent=new Date().getFullYear()</script>
+</body>
+</html>

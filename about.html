@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HouseCall — About Us</title>
+  <meta name="description" content="Local Ballarat caretaking service. We're your eyes on the ground when you can't be there.">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script src="shared.js" defer></script>
+</head>
+<body onload="isActive('about.html')">
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="navin wrap">
+      <div class="brand"><img src="assets/logo.svg" alt="HouseCall logo"><span>HouseCall</span></div>
+      <div class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="checklist.html">Templates</a>
+        <a href="addons.html">Add-ons</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a class="btn primary" href="contact.html">Enquiry</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section>
+      <h2>About HouseCall</h2>
+      <p class="sub">Local caretaking in Ballarat. We're your eyes on the ground when you can't be there.</p>
+      
+      <div class="cards">
+        <div class="card">
+          <h3>Who we are</h3>
+          <p>Based in Ballarat with deep local knowledge of the area. We understand the unique needs of Airbnb hosts, absent property owners, and body corporates who need reliable on-site presence without the overhead of full-time staff.</p>
+        </div>
+
+        <div class="card">
+          <h3>Why we exist</h3>
+          <p>Airbnb hosts and absent owners need more than just cleaners - they need someone who checks that everything is actually working, secure, and guest-ready. We fill that gap between cleaning services and full property management.</p>
+        </div>
+
+        <div class="card">
+          <h3>What we do differently</h3>
+          <ul>
+            <li><strong>No guest contact</strong> - We stay in our lane; you control all guest communication</li>
+            <li><strong>Same-night reporting</strong> - Photos and notes delivered while it's still fresh</li>
+            <li><strong>Circuit-based efficiency</strong> - Tuesday-Thursday 5-9pm window keeps costs down</li>
+            <li><strong>Visual verification</strong> - We check your cleaner did their job properly</li>
+            <li><strong>10-item focus</strong> - Sharp checklist keeps visits efficient (15-20 mins)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Service area</h3>
+          <p>We service Ballarat, Creswick, Buninyong and nearby suburbs. Our circuit-based approach means we visit multiple properties in one evening, keeping your costs low while maintaining weekly consistency.</p>
+        </div>
+
+        <div class="card">
+          <h3>Insurance & credentials</h3>
+          <p>Fully insured for your peace of mind. <a href="assets/docs/insurance.pdf" target="_blank">View certificate</a></p>
+          <p>ABN: [Your actual ABN here] • <a href="assets/docs/abn.pdf" target="_blank">Proof</a></p>
+        </div>
+
+        <div class="card">
+          <h3>Get started</h3>
+          <p>First visit is a site meeting (Saturday 10-12 preferred for new clients). We'll walk through your property, discuss your checklist, and show you our reporting process. No obligation.</p>
+          <div class="actions">
+            <a class="btn primary" href="contact.html">Make an enquiry</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div>© <span id="yearAbout"></span> HouseCall • Fully insured</div>
+    <div style="display:flex;gap:12px">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="contact.html">Enquiry</a>
+    </div>
+  </footer>
+  <script>document.getElementById('yearAbout').textContent=new Date().getFullYear()</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HouseCall — Terms of Service</title>
+  <meta name="description" content="Terms for HouseCall caretaking services.">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script src="shared.js" defer></script>
+</head>
+<body onload="isActive('terms.html')">
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="navin wrap">
+      <div class="brand"><img src="assets/logo.svg" alt="HouseCall logo"><span>HouseCall</span></div>
+      <div class="navlinks">
+        <a href="index.html">Home</a><a href="checklist.html">Templates</a><a href="addons.html">Add-ons</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a class="btn primary" href="contact.html">Enquiry</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section>
+      <h2>Terms of Service</h2>
+      <div class="card">
+        <h3>Scope</h3>
+        <p>Caretaking only (no general cleaning). Visual checks and light tidy as described. Add-ons available when pre-booked.</p>
+      </div>
+      <div class="card">
+        <h3>Billing</h3>
+        <p>Airbnb Core billed monthly in advance on the 1st. Add-ons and emergency call-out billed at month end.</p>
+      </div>
+      <div class="card">
+        <h3>Scheduling</h3>
+        <p>Visit window Tue–Thu 5–9pm (3-night window). We’ll advise any unavailability in advance.</p>
+      </div>
+      <div class="card">
+        <h3>Liability & insurance</h3>
+        <p>Fully insured. See <a href="assets/docs/insurance.pdf" target="_blank">certificate</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div>© <span id="yearT"></span> HouseCall</div>
+    <div style="display:flex;gap:12px"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Enquiry</a></div>
+  </footer>
+  <script>document.getElementById('yearT').textContent=new Date().getFullYear()</script>
+</body>
+</html>

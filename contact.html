@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HouseCall — Enquiry</title>
+  <meta name="description" content="Make an enquiry via WhatsApp or email. Your details are only used to arrange services — we don’t share them.">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script src="shared.js" defer></script>
+</head>
+<body onload="isActive('contact.html')">
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="navin wrap">
+      <div class="brand"><img src="assets/logo.svg" alt="HouseCall logo"><span>HouseCall</span></div>
+      <div class="navlinks">
+        <a href="index.html">Home</a><a href="checklist.html">Templates</a><a href="addons.html">Add-ons</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a class="btn primary" href="contact.html">Enquiry</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section>
+      <h2>Make an enquiry (WhatsApp or email)</h2>
+      <p class="sub">We’ll confirm your visit window and offer a free first visit or site meeting (Saturday 10–12 for new clients, or Tue–Thu 5–9pm for locals).</p>
+      <form class="form" onsubmit="event.preventDefault(); validateAndSend();">
+        <label>Name</label><input id="n" required placeholder="Full name">
+        <label>Mobile</label><input id="m" required placeholder="04xx xxx xxx or +61 4xx xxx xxx" inputmode="tel">
+        <label>Email</label><input id="e" type="email" placeholder="you@example.com" inputmode="email">
+        <label>Service</label>
+        <select id="svc">
+          <option>Airbnb Core (weekly)</option>
+          <option>Apartment / Residential (fortnightly)</option>
+          <option>Apartment / Residential (monthly)</option>
+          <option>Body Corporate (weekly)</option>
+          <option>Body Corporate (fortnightly)</option>
+          <option>Body Corporate (monthly)</option>
+        </select>
+        <label>Preferred time</label>
+        <select id="slot">
+          <option>Saturday 10–12 (site meeting)</option>
+          <option>Weeknight Tue–Thu 5–9pm</option>
+        </select>
+        <label>Notes (optional)</label>
+        <textarea id="notes" placeholder="Anything specific you’d like us to check"></textarea>
+        <div class="actions">
+          <button class="btn primary" type="submit">Send via WhatsApp</button>
+          <a id="emailBtn" class="btn ghost" target="_blank" rel="noreferrer noopener">Or send via email</a>
+        </div>
+        <small>Privacy: Your details are only used to arrange services. We don’t share them. See our <a href="privacy.html">Privacy Policy</a>.</small>
+      </form>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div>© <span id="year6"></span> HouseCall • Fully insured</div>
+    <div style="display:flex;gap:12px"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Enquiry</a></div>
+  </footer>
+
+  <script>
+    document.getElementById('year6').textContent=new Date().getFullYear();
+
+    function validateAndSend(){
+      if(!n.value.trim()){ return showError(n,'Please enter your name.'); }
+      if(!isValidAUPhone(m.value)){ return showError(m,'Please enter a valid AU mobile (04xx xxx xxx or +61).'); }
+      if(e.value && !isValidEmail(e.value)){ return showError(e,'Please enter a valid email address.'); }
+
+      const payload = `HouseCall enquiry
+Name: ${n.value}
+Mobile: ${m.value}
+Email: ${e.value||'not provided'}
+Service: ${svc.value}
+Preferred time: ${slot.value}
+Notes: ${notes.value||''}`;
+
+      window.open(waLink(payload),'_blank');
+      const mail = mailtoLink('HouseCall enquiry', payload);
+      const emailBtn = document.getElementById('emailBtn');
+      emailBtn.href = mail;
+      emailBtn.textContent = 'Or send via email';
+    }
+  </script>
+</body>
+</html>

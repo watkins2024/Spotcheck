@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HouseCall — Weekly Home Care in Ballarat  enquire for Creswick and Buninyong or nearby</title>
+  <meta name="description" content="Weekly and fortnightly home caretaking for Airbnb, apartments and body corporates in Ballarat. Guest-ready checks, restock, bins, same-night WhatsApp photos.">
+  <link rel="icon" href="assets/favicon.ico">
+  <!-- cache-buster ?v=2 helps if your browser was caching the old CSS -->
+  <link rel="stylesheet" href="styles.css?v=2">
+
+  <!-- Config FIRST, then shared helpers -->
+  <script src="config.js"></script>
+  <script src="shared.js" defer></script>
+</head>
+<body onload="isActive('index.html')">
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="navin wrap">
+      <div class="brand">
+        <img src="assets/logo.svg" alt="HouseCall logo" width="38" height="38">
+        <span>HouseCall</span>
+        <span class="header-badge" aria-label="Trust badge">Fully insured</span>
+      </div>
+      <div class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="checklist.html">Templates</a>
+        <a href="addons.html">Add-ons</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a class="btn primary" href="contact.html">Make an enquiry</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero-full" role="banner">
+    <!-- Using a real <img> for accessibility; overlay is added by CSS -->
+    <div class="bg">
+      <img src="assets/hero.jpg" alt="Ballarat home exterior at dusk, well-lit entryway">
+      <div class="overlay" aria-hidden="true"></div>
+    </div>
+    <div class="hero-inner wrap">
+      <span class="eyebrow">Ballarat</span>, Creswick and Buninyong
+      <h1>Weekly Home Care — Secure. Guest-ready. Set & forget.</h1>
+      <p class="lead">Weekly, Monthly or fortnightly homechecks- restocks, visual clean verification, rake or mow, and same-night photo on WhatsApp or email. Built for Airbnb, apartments, and body corporates.</p>
+      <div class="bullets">
+        <div class="pill">Airbnb guest-ready oversight • weekly</div>
+        <div class="pill">Apartments • fortnightly/monthly</div>
+        <div class="pill">Body corporate • reports</div>
+        <div class="pill">Tue–Thu 5–9pm window- same day photographic report to you</div>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="contact.html">Make an enquiry</a>
+        <a class="btn ghost" href="checklist.html">Build your template</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section aria-labelledby="paths">
+      <h2 id="paths">Choose your path</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>1) Airbnb Core</h3>
+          <p>Guest-ready checks with restock, bins, and visual clean verification.</p>
+          <div class="actions"><a class="btn primary" href="pricing.html#airbnb">View pricing</a></div>
+        </div>
+        <div class="card">
+          <h3>2) Apartment / Residential</h3>
+          <p>Fortnightly or monthly peace-of-mind checks while you’re away.</p>
+          <div class="actions"><a class="btn primary" href="pricing.html#residential">View pricing</a></div>
+        </div>
+        <div class="card">
+          <h3>3) Body Corporate</h3>
+          <p>On-the-ground presence with photos and monthly roll-ups.</p>
+          <div class="actions"><a class="btn primary" href="pricing.html#bodycorp">View pricing</a></div>
+        </div>
+        <div class="card">
+          <h3>4) Add-ons</h3>
+          <p>Linen movement, key exchange, pre-arrival set-up, and more.</p>
+          <div class="actions"><a class="btn primary" href="addons.html">See add-ons</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="testimonials">
+      <h2 id="testimonials">Testimonials</h2>
+      <p class="sub">This is the service we needed- Jacqui Stokes.</p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div>© <span id="year"></span> HouseCall • ABN 12 345 678 901 • 
+      <a href="assets/docs/insurance.pdf" target="_blank">Insurance certificate</a> • 
+      <a href="assets/docs/abn.pdf" target="_blank">ABN proof</a>
+    </div>
+    <div style="display:flex;gap:12px">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Enquiry</a>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+</body>
+</html>
