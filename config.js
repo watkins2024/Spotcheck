@@ -1,6 +1,6 @@
 // Global config (load this BEFORE shared.js on every page)
-window.HOUSECALL_CONFIG = {
-  businessName: "HouseCall",
+window.Boots On Ground_CONFIG = {
+  businessName: "Boots On Ground",
   phoneForWhatsApp: "61405160602",
   email: "rjw.basalt@gmail.com",
   abn: "12 345 678 901",

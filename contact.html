@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HouseCall — Enquiry</title>
+  <title>Boots On Ground — Enquiry</title>
   <meta name="description" content="Make an enquiry via WhatsApp or email. Your details are only used to arrange services — we don’t share them.">
   <link rel="icon" href="assets/favicon.ico">
   <link rel="stylesheet" href="styles.css">
@@ -12,7 +12,7 @@
 <body onload="isActive('contact.html')">
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="navin wrap">
-      <div class="brand"><img src="assets/logo.svg" alt="HouseCall logo"><span>HouseCall</span></div>
+      <div class="brand"><img src="assets/logo.svg" alt="Boots On Ground logo"><span>Boots On Ground</span></div>
       <div class="navlinks">
         <a href="index.html">Home</a><a href="checklist.html">Templates</a><a href="addons.html">Add-ons</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a href="about.html">About</a><a class="btn primary" href="contact.html">Enquiry</a>
       </div>
@@ -53,7 +53,7 @@
   </main>
 
   <footer class="wrap">
-    <div>© <span id="year6"></span> HouseCall • Fully insured</div>
+    <div>© <span id="year6"></span> Boots On Ground • Fully insured</div>
     <div style="display:flex;gap:12px"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Enquiry</a></div>
   </footer>
 
@@ -65,7 +65,7 @@
       if(!isValidAUPhone(m.value)){ return showError(m,'Please enter a valid AU mobile (04xx xxx xxx or +61).'); }
       if(e.value && !isValidEmail(e.value)){ return showError(e,'Please enter a valid email address.'); }
 
-      const payload = `HouseCall enquiry
+      const payload = `Boots On Ground enquiry
 Name: ${n.value}
 Mobile: ${m.value}
 Email: ${e.value||'not provided'}
@@ -74,7 +74,7 @@ Preferred time: ${slot.value}
 Notes: ${notes.value||''}`;
 
       window.open(waLink(payload),'_blank');
-      const mail = mailtoLink('HouseCall enquiry', payload);
+      const mail = mailtoLink('Boots On Ground enquiry', payload);
       const emailBtn = document.getElementById('emailBtn');
       emailBtn.href = mail;
       emailBtn.textContent = 'Or send via email';
