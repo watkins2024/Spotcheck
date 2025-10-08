@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <style>
+    .t{font:700 18px/1 'Arial', sans-serif; fill:#1a1a1a}
+    .boot{fill:#1a1a1a}
+  </style>
+  <!-- Boot icon (simplified) -->
+  <path class="boot" d="M10 40 C12 30, 28 26, 40 28 C52 30, 56 36, 60 40 L60 48 C56 52, 44 54, 30 52 C18 50, 12 46, 10 40 Z" />
+  <!-- Text -->
+  <text x="72" y="36" class="t">BOOTS</text>
+</svg>

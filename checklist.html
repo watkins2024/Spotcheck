@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Boots On Ground — Templates</title>
+  <title>Boots on Ground — Templates</title>
   <link rel="stylesheet" href="styles.css">
   <script src="shared.js" defer></script>
   <style>
@@ -18,7 +18,7 @@
 <body onload="isActive('checklist.html')">
   <div class="nav">
     <div class="navin wrap">
-      <div class="brand"><div class="logo">HC</div> Boots On Ground</div>
+  <div class="brand"><img src="assets/logo.svg" alt="Boots on Ground logo" width="38" height="38"><span>Boots on Ground</span></div>
       <div class="navlinks">
         <a href="index.html">Home</a>
         <a href="checklist.html">Templates</a>
@@ -152,7 +152,7 @@
   </main>
 
   <footer class="wrap">
-    <div>© <span id="year2"></span> Boots On Ground</div>
+  <div>© <span id="year2"></span> Boots on Ground</div>
     <div style="display:flex;gap:12px"><a href="index.html">Home</a><a href="contact.html">Enquiry</a></div>
   </footer>
 
@@ -197,7 +197,7 @@
         lines.unshift(`• Frequency: ${freq}`);
       }
       const top = lines.slice(0,10);
-      const header = isAir ? 'Boots On Ground — Airbnb Guest-Ready Template' : 'Boots On Ground — Apartments / Body Corporate Template';
+  const header = isAir ? 'Boots on Ground — Airbnb Guest-Ready Template' : 'Boots on Ground — Apartments / Body Corporate Template';
       const text = `${header}\nVisit window: ${windowSel}\n\n${top.join('\n')}\n\nReport: Photos + notes sent same night (WhatsApp/email).\nNote: Additional checks are welcome if sent via WhatsApp prior to the visit.`;
 
       document.getElementById('preview').value = text;
