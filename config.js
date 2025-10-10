@@ -4,7 +4,7 @@ window.BOOTS_ON_GROUND_CONFIG = {
   businessName: "Boots on Ground",
   phoneForWhatsApp: "61405160602",
   email: "rjw.basalt@gmail.com",
-  abn: "12 345 678 901",
+  abn: "73 025 927 540",
   address: "Ballarat, VIC, Australia",
   areaServed: "Ballarat and nearby suburbs",
   url: "https://bootsonground.com.au", // update to your real domain
