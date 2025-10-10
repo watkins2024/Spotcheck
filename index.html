@@ -48,15 +48,19 @@
         <div class="pill">From $360 / month</div>
       </div>
       
-      <!-- Scenario carousel: compact rotating use-cases (auto-rotates every 6s) -->
-      <div class="scenario-carousel" role="region" aria-labelledby="scenario-label">
-        <p id="scenario-label" class="carousel-label">Real Scenarios:</p>
-        <div class="scenario-item active">"Your cleaner finished at 2pm. We check at 6pm and send photos — beds made, surfaces clean, property guest-ready. No more surprise bad reviews."</div>
-        <div class="scenario-item">"You're in Melbourne, property is in Ballarat. You message us: 'Can you check the gas meter and replace the front porch bulb?' Done next visit, photo sent."</div>
-        <div class="scenario-item">"Quick exterior tidy: we rake leaves, clear cobwebs, sweep the path. Your Airbnb looks immaculate for guest check-in. Takes us 10 minutes, saves you a drive."</div>
-        <div class="scenario-item">"You ordered mulch from Bunnings. We pick it up Tuesday, leave it in your driveway, send you a photo. You arrange the gardener from Melbourne."</div>
-        <div class="scenario-item">"Bins need to go out Thursday. We do it during our scheduled visit and send confirmation. You don't coordinate anything or ask neighbors."</div>
-        <div class="scenario-item">"Hallway light is out. We replace the bulb (you keep spares in the cupboard), test it works, photograph it. Simple maintenance, no callout fees."</div>
+      <!-- Compact horizontal rotating banner (thin ticker between bullets and CTAs) -->
+      <div class="scenario-banner" role="region" aria-live="polite" aria-atomic="true">
+        <div class="banner-inner">
+          <div class="banner-icon" aria-hidden="true">💡</div>
+          <div class="banner-rotator" id="banner-rotator">
+            <div class="banner-item active">"Your cleaner finished at 2pm. We check at 6pm — beds made, property guest-ready."</div>
+            <div class="banner-item">"You're in Melbourne. You message: 'Check gas meter, replace porch bulb.' Done next visit."</div>
+            <div class="banner-item">"Quick exterior tidy: rake leaves, clear cobwebs. Property looks immaculate in 10 minutes."</div>
+            <div class="banner-item">"Ordered mulch from Bunnings? We pick it up Tuesday, leave in driveway, send photo."</div>
+            <div class="banner-item">"Bins to curb Thursday during our visit. You don't coordinate anything."</div>
+            <div class="banner-item">"Hallway light out? We replace bulb from your spares, test it, photograph it."</div>
+          </div>
+        </div>
       </div>
     <div class="actions">
       <a class="btn primary" href="contact.html">Book free first check</a>
@@ -181,24 +185,39 @@
   </footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
   <script>
-    // Scenario carousel rotation: lightweight, 6s per slide
+    // Banner rotator: rotate .banner-item every 6s; pause on hover/focus; respect reduced motion
     (function(){
-      const items = Array.from(document.querySelectorAll('.scenario-carousel .scenario-item'));
+      const rotator = document.getElementById('banner-rotator');
+      if(!rotator) return;
+      const items = Array.from(rotator.querySelectorAll('.banner-item'));
       if(!items.length) return;
       let idx = items.findIndex(i=>i.classList.contains('active'));
       if(idx < 0) idx = 0, items[0].classList.add('active');
-      const rotate = () => {
+
+      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let timer = null;
+
+      function rotate(){
         items[idx].classList.remove('active');
         idx = (idx + 1) % items.length;
         items[idx].classList.add('active');
-      };
-      // Auto-rotate every 6s
-      const timer = setInterval(rotate, 6000);
-      // Pause on hover for accessibility
-      const carousel = document.querySelector('.scenario-carousel');
-      if(carousel){
-        carousel.addEventListener('mouseenter', ()=> clearInterval(timer));
-        carousel.addEventListener('focusin', ()=> clearInterval(timer));
+      }
+
+      function start(){
+        if(prefersReduced) return;
+        stop();
+        timer = setInterval(rotate, 6000);
+      }
+      function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+
+      start();
+
+      const bannerWrap = document.querySelector('.scenario-banner');
+      if(bannerWrap){
+        bannerWrap.addEventListener('mouseenter', stop);
+        bannerWrap.addEventListener('mouseleave', start);
+        bannerWrap.addEventListener('focusin', stop);
+        bannerWrap.addEventListener('focusout', start);
       }
     })();
   </script>
