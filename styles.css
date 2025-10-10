@@ -83,3 +83,16 @@ footer{padding:24px;border-top:1px solid var(--line);color:var(--muted);display:
   .bullets{grid-template-columns:1fr}
   .cards{grid-template-columns:1fr}
 }
+
+/* Logo responsive sizing */
+.brand img {
+  width: 180px;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .brand img {
+    width: 140px;
+  }
+}
