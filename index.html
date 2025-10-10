@@ -47,10 +47,21 @@
         <div class="pill">Weekly WhatsApp reports with photos</div>
         <div class="pill">From $360 / month</div>
       </div>
-      <div class="actions">
-          <a class="btn primary" href="contact.html">Book free first check</a>
-          <a class="btn ghost" href="pricing.html">See what's included</a>
+      
+      <!-- Scenario carousel: compact rotating use-cases (auto-rotates every 6s) -->
+      <div class="scenario-carousel" role="region" aria-labelledby="scenario-label">
+        <p id="scenario-label" class="carousel-label">Real Scenarios:</p>
+        <div class="scenario-item active">"Your cleaner finished at 2pm. We check at 6pm and send photos — beds made, surfaces clean, property guest-ready. No more surprise bad reviews."</div>
+        <div class="scenario-item">"You're in Melbourne, property is in Ballarat. You message us: 'Can you check the gas meter and replace the front porch bulb?' Done next visit, photo sent."</div>
+        <div class="scenario-item">"Quick exterior tidy: we rake leaves, clear cobwebs, sweep the path. Your Airbnb looks immaculate for guest check-in. Takes us 10 minutes, saves you a drive."</div>
+        <div class="scenario-item">"You ordered mulch from Bunnings. We pick it up Tuesday, leave it in your driveway, send you a photo. You arrange the gardener from Melbourne."</div>
+        <div class="scenario-item">"Bins need to go out Thursday. We do it during our scheduled visit and send confirmation. You don't coordinate anything or ask neighbors."</div>
+        <div class="scenario-item">"Hallway light is out. We replace the bulb (you keep spares in the cupboard), test it works, photograph it. Simple maintenance, no callout fees."</div>
       </div>
+    <div class="actions">
+      <a class="btn primary" href="contact.html">Book free first check</a>
+      <a class="btn ghost" href="pricing.html">See what's included</a>
+    </div>
     </div>
   </header>
 
@@ -169,5 +180,27 @@
     </div>
   </footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+  <script>
+    // Scenario carousel rotation: lightweight, 6s per slide
+    (function(){
+      const items = Array.from(document.querySelectorAll('.scenario-carousel .scenario-item'));
+      if(!items.length) return;
+      let idx = items.findIndex(i=>i.classList.contains('active'));
+      if(idx < 0) idx = 0, items[0].classList.add('active');
+      const rotate = () => {
+        items[idx].classList.remove('active');
+        idx = (idx + 1) % items.length;
+        items[idx].classList.add('active');
+      };
+      // Auto-rotate every 6s
+      const timer = setInterval(rotate, 6000);
+      // Pause on hover for accessibility
+      const carousel = document.querySelector('.scenario-carousel');
+      if(carousel){
+        carousel.addEventListener('mouseenter', ()=> clearInterval(timer));
+        carousel.addEventListener('focusin', ()=> clearInterval(timer));
+      }
+    })();
+  </script>
 </body>
 </html>
