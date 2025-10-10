@@ -21,7 +21,7 @@ a:hover{text-decoration:underline}
 
 /* Hero full screen */
 header.hero-full{
-  min-height:100vh;
+  min-height:70vh;
   display:grid;
   place-items:center;
   position:relative;
