@@ -213,5 +213,20 @@
       const p = document.getElementById('preview'); p.select(); document.execCommand('copy');
     }
   </script>
+  <script>
+    // Enforce max 10 items selected in templates
+    function enforceMax(nameAttr, max){
+      document.addEventListener('change', ()=>{
+        const checked = [...document.querySelectorAll(`input[name="${nameAttr}"]:checked`)];
+        if(checked.length>max){
+          // uncheck the last one and alert
+          checked[checked.length-1].checked = false;
+          alert('Please select up to ' + max + ' items only. Use the custom notes for extras or pre-book add-ons.');
+        }
+      });
+    }
+    enforceMax('air',10);
+    enforceMax('body',10);
+  </script>
 </body>
 </html>
