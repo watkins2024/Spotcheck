@@ -188,40 +188,38 @@
   </footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
   <script>
-    // Banner rotator: rotate .banner-item every 6s; pause on hover/focus; respect reduced motion
+    // Banner rotator: supports multiple .banner-rotator containers on the page.
     (function(){
-      const rotator = document.getElementById('banner-rotator');
-      if(!rotator) return;
-      const items = Array.from(rotator.querySelectorAll('.banner-item'));
-      if(!items.length) return;
-      let idx = items.findIndex(i=>i.classList.contains('active'));
-      if(idx < 0) idx = 0, items[0].classList.add('active');
+      const rotators = Array.from(document.querySelectorAll('.banner-rotator'));
+      if(!rotators.length) return;
 
       const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      let timer = null;
 
-      function rotate(){
-        items[idx].classList.remove('active');
-        idx = (idx + 1) % items.length;
-        items[idx].classList.add('active');
-      }
+      rotators.forEach((rotator) => {
+        const items = Array.from(rotator.querySelectorAll('.banner-item'));
+        if(!items.length) return;
+        let idx = items.findIndex(i=>i.classList.contains('active'));
+        if(idx < 0) idx = 0, items[0].classList.add('active');
 
-      function start(){
-        if(prefersReduced) return;
-        stop();
-        timer = setInterval(rotate, 6000);
-      }
-      function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+        let timer = null;
+        function rotate(){
+          items[idx].classList.remove('active');
+          idx = (idx + 1) % items.length;
+          items[idx].classList.add('active');
+        }
+        function start(){ if(prefersReduced) return; stop(); timer = setInterval(rotate, 6000); }
+        function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+        start();
 
-      start();
-
-      const bannerWrap = document.querySelector('.scenario-banner');
-      if(bannerWrap){
-        bannerWrap.addEventListener('mouseenter', stop);
-        bannerWrap.addEventListener('mouseleave', start);
-        bannerWrap.addEventListener('focusin', stop);
-        bannerWrap.addEventListener('focusout', start);
-      }
+        // pause per rotator when hovered/focused (find nearest scenario-banner wrapper)
+        const wrapper = rotator.closest('.scenario-banner');
+        if(wrapper){
+          wrapper.addEventListener('mouseenter', stop);
+          wrapper.addEventListener('mouseleave', start);
+          wrapper.addEventListener('focusin', stop);
+          wrapper.addEventListener('focusout', start);
+        }
+      });
     })();
   </script>
 </body>
