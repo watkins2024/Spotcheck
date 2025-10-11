@@ -47,14 +47,7 @@ header.hero-full .overlay{
 }
 .hero-inner{position:relative; z-index:1; padding:20px}
 
-/* Compact hero use-cases (small inline items under the bullets) */
-.hero-usecases{display:flex;gap:12px;flex-wrap:wrap;color:rgba(241,245,249,0.9);font-style:italic;margin-top:10px;align-items:center}
-.hero-usecases span{background:rgba(255,255,255,0.04);padding:6px 10px;border-radius:8px;font-size:13px}
-
-@media (max-width:720px){
-  .hero-usecases{font-size:13px;gap:8px}
-  .hero-usecases span{padding:6px 8px;font-size:12px}
-}
+/* .hero-usecases styles removed — use-case descriptors deleted from markup to keep hero uncluttered */
 .eyebrow{display:inline-flex;gap:8px;align-items:center;background:var(--accent-ghost);color:#1e40af;padding:6px 12px;border-radius:999px;font-weight:700;border:1px solid #bfdbfe}
 h1{font-size:clamp(30px,5vw,58px);line-height:1.06;margin:16px 0}
 .lead{max-width:720px;font-size:18px;color:#f1f5f9}
