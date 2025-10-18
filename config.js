@@ -2,8 +2,8 @@
 // Use a valid JS identifier for the global config object.
 window.BOOTS_ON_GROUND_CONFIG = {
   businessName: "Boots on Ground",
-  phoneForWhatsApp: "61405160602",
-  email: "rjw.basalt@gmail.com",
+  phoneForWhatsApp: "0405160602",
+  email: "contact@bootsonground.com.au",
   abn: "73 025 927 540",
   address: "Ballarat, VIC, Australia",
   areaServed: "Ballarat and nearby suburbs",

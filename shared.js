@@ -1,8 +1,21 @@
 // Shared helpers — use on every page
 // Prefer values from the global config but keep sensible fallbacks.
 const _CONFIG = (typeof window !== 'undefined' && window.BOOTS_ON_GROUND_CONFIG) ? window.BOOTS_ON_GROUND_CONFIG : {};
-const WA = _CONFIG.phoneForWhatsApp || '61405160602';
-const EMAIL = _CONFIG.email || 'rjw.basalt@gmail.com';
+
+function normalizeWhatsApp(number){
+  const fallback = '61405160602';
+  if(!number) return fallback;
+  const digits = String(number).replace(/[^0-9]/g,'');
+  if(!digits) return fallback;
+  if(digits.startsWith('04')) return '61' + digits.slice(1);
+  if(digits.startsWith('614')) return digits;
+  if(digits.startsWith('61')) return digits;
+  if(digits.length === 9 && digits.startsWith('4')) return '61' + digits;
+  return digits;
+}
+
+const WA = normalizeWhatsApp(_CONFIG.phoneForWhatsApp);
+const EMAIL = _CONFIG.email || 'contact@bootsonground.com.au';
 function isActive(id){ const a = document.querySelector(`a[href$="${id}"]`); if(a) a.classList.add('active'); }
 function waLink(text){return `https://wa.me/${WA}?text=${encodeURIComponent(text)}`}
 function mailtoLink(subject, body){return `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`}
