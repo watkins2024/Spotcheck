@@ -23,3 +23,28 @@ function sendEnquiry(payload){
   // open WhatsApp
   window.open(waLink(payload),'_blank');
 }
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.navlinks');
+    if (!toggle || !links) return;
+
+    const closeNav = () => {
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+
+    links.querySelectorAll('a').forEach(anchor => {
+      anchor.addEventListener('click', closeNav);
+    });
+  });
+}
