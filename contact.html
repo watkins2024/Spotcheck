@@ -23,6 +23,16 @@
     <section>
       <h2>Make an enquiry (WhatsApp or email)</h2>
       <p class="sub">First visit is free — we'll show you our 10-item check and reporting process. We operate on weekly subscriptions billed monthly.</p>
+
+      <div class="card" style="background:#f8fafc; border:1px solid #cbd5f5; color:#1e3a8a; margin-bottom:22px;">
+        <h3 style="margin:0 0 8px;">Prefer to reach out directly?</h3>
+        <p style="margin:0 0 14px; color:#475569;">Tap a button below if the form gives you trouble.</p>
+        <div class="actions">
+          <a id="directWa" class="btn primary" target="_blank" rel="noreferrer noopener">Open WhatsApp</a>
+          <a id="directEmail" class="btn ghost" target="_blank" rel="noreferrer noopener">Email us</a>
+        </div>
+      </div>
+
       <form class="form" onsubmit="event.preventDefault(); validateAndSend();">
         <label>Name</label><input id="n" required placeholder="Full name">
         <label>Mobile</label><input id="m" required placeholder="04xx xxx xxx or +61 4xx xxx xxx" inputmode="tel">
@@ -44,8 +54,9 @@
         <textarea id="notes" placeholder="Anything specific you’d like us to check"></textarea>
         <div class="actions">
           <button class="btn primary" type="submit">Book free first check</button>
-          <a id="emailBtn" class="btn ghost" target="_blank" rel="noreferrer noopener">Or send via email</a>
+          <a id="emailBtn" class="btn ghost" target="_blank" rel="noreferrer noopener" style="display:none">Send via email instead</a>
         </div>
+        <p id="contactStatus" style="color:#0f172a; font-size:14px; margin:6px 0 0; display:none;"></p>
         <small>Privacy: Your details are only used to arrange services. We don’t share them. See our <a href="privacy.html">Privacy Policy</a>.</small>
       </form>
     </section>
@@ -59,24 +70,64 @@
   <script>
     document.getElementById('year6').textContent=new Date().getFullYear();
 
+    const plainPhone = (window.BOOTS_ON_GROUND_CONFIG && window.BOOTS_ON_GROUND_CONFIG.phoneForWhatsApp) || (typeof WA !== 'undefined' ? WA : '61405160602');
+    const emailAddress = (window.BOOTS_ON_GROUND_CONFIG && window.BOOTS_ON_GROUND_CONFIG.email) || (typeof EMAIL !== 'undefined' ? EMAIL : 'rjw.basalt@gmail.com');
+
+    const directWa = document.getElementById('directWa');
+    const directEmail = document.getElementById('directEmail');
+    if(directWa){
+      const cleanNumber = (plainPhone || '').replace(/[^0-9]/g,'');
+      directWa.href = cleanNumber ? `https://wa.me/${cleanNumber}` : '#';
+    }
+    if(directEmail){
+      directEmail.href = `mailto:${emailAddress}`;
+      directEmail.textContent = `Email ${emailAddress}`;
+    }
+
     function validateAndSend(){
       if(!n.value.trim()){ return showError(n,'Please enter your name.'); }
       if(!isValidAUPhone(m.value)){ return showError(m,'Please enter a valid AU mobile (04xx xxx xxx or +61).'); }
       if(e.value && !isValidEmail(e.value)){ return showError(e,'Please enter a valid email address.'); }
 
-  const payload = `Boots on Ground enquiry
-Name: ${n.value}
-Mobile: ${m.value}
-Email: ${e.value||'not provided'}
-Service: ${svc.value}
-Preferred time: ${slot.value}
-Notes: ${notes.value||''}`;
+      const payload = `Boots on Ground enquiry\nName: ${n.value}\nMobile: ${m.value}\nEmail: ${e.value||'not provided'}\nService: ${svc.value}\nPreferred time: ${slot.value}\nNotes: ${notes.value||''}`;
 
-      window.open(waLink(payload),'_blank');
-  const mail = mailtoLink('Boots on Ground enquiry', payload);
+      const waHref = waLink(payload);
+      const popup = window.open(waHref,'_blank');
+      if(!popup || popup.closed || typeof popup.closed === 'undefined'){
+        window.location.href = waHref;
+      }
+
+      const mail = mailtoLink('Boots on Ground enquiry', payload);
       const emailBtn = document.getElementById('emailBtn');
       emailBtn.href = mail;
-      emailBtn.textContent = 'Or send via email';
+      emailBtn.style.display = 'inline-flex';
+      emailBtn.textContent = `Email ${emailAddress}`;
+
+      const status = document.getElementById('contactStatus');
+      status.textContent = 'If WhatsApp did not open, use the email button — your message is pre-filled.';
+      status.style.display = 'block';
+    }
+
+    function showError(field, message){
+      alert(message);
+      try{ field.focus(); }catch(err){}
+      return false;
+    }
+
+    function isValidAUPhone(value){
+      if(!value) return false;
+      const digits = value.replace(/[^0-9+]/g,'');
+      if(digits.startsWith('+61')){
+        return digits.length === 12; // +61 plus 9 digits
+      }
+      if(digits.startsWith('61')){
+        return digits.length === 11; // 61 plus 9 digits
+      }
+      return /^04\d{8}$/.test(digits);
+    }
+
+    function isValidEmail(value){
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
     }
   </script>
 </body>
