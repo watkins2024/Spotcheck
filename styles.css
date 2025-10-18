@@ -21,7 +21,7 @@ a:hover{text-decoration:underline}
 
 /* Hero full screen */
 header.hero-full{
-  min-height:62vh;
+  min-height:42vh;
   display:grid;
   place-items:center;
   position:relative;
@@ -122,7 +122,7 @@ footer{padding:24px;border-top:1px solid var(--line);color:var(--muted);display:
 @media (max-width: 768px) {
   /* Reduce hero height on mobile */
   header.hero-full {
-    min-height: 45vh !important;
+    min-height: 32vh !important;
   }
 
   /* Force service cards to stack on mobile */
