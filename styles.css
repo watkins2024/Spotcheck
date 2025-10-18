@@ -116,3 +116,47 @@ footer{padding:24px;border-top:1px solid var(--line);color:var(--muted);display:
 
 /* Compact horizontal rotating banner (thin ticker between bullets and CTAs) */
 /* banner css removed — component deprecated */
+/* ============= MOBILE FIXES ============= */
+
+@media (max-width: 768px) {
+  /* Reduce hero height on mobile */
+  header.hero-full {
+    min-height: 45vh !important;
+  }
+  
+  /* Force service cards to stack on mobile */
+  .cards[style*="grid-template-columns:repeat(3,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Smaller hero text on mobile */
+  h1 {
+    font-size: 28px !important;
+    line-height: 1.2;
+  }
+  
+  .lead {
+    font-size: 16px;
+  }
+  
+  /* Hide less important nav links on mobile */
+  .navlinks a[href="checklist.html"],
+  .navlinks a[href="addons.html"],
+  .navlinks a[href="about.html"] {
+    display: none;
+  }
+  
+  /* Stack nav vertically on very small screens */
+  @media (max-width: 480px) {
+    .navlinks a[href="faq.html"] {
+      display: none;
+    }
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 960px) {
+  header.hero-full {
+    min-height: 52vh;
+  }
+}
