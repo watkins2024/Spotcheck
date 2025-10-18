@@ -43,6 +43,7 @@
       <div class="tabs" role="tablist" aria-label="Template type">
         <button class="tab" role="tab" id="tab-airbnb" aria-selected="true" aria-controls="panel-airbnb" onclick="switchTab('airbnb')">Airbnb Core</button>
         <button class="tab" role="tab" id="tab-body" aria-selected="false" aria-controls="panel-body" onclick="switchTab('body')">Apartments / Body Corporate</button>
+        <button class="tab" role="tab" id="tab-absentee" aria-selected="false" aria-controls="panel-absentee" onclick="switchTab('absentee')">Absentee Owners</button>
       </div>
 
       <!-- Airbnb Core -->
@@ -132,6 +133,47 @@
         </select>
       </div>
 
+      <!-- Absentee Owners -->
+      <div id="panel-absentee" role="tabpanel" aria-labelledby="tab-absentee" hidden>
+        <p class="sub">Travelling for work or taking a long holiday? We keep the home looking lived-in, water plants, clear mail, and flag anything that needs attention.</p>
+        <div class="grid2">
+          <div class="card">
+            <h3>Curbside & Exterior</h3>
+            <label><input type="checkbox" name="away" value="Street frontage tidy; bins and paths cleared" checked> Street frontage tidy; bins and paths cleared</label>
+            <label><input type="checkbox" name="away" value="Porch, entry, and side gates secured" checked> Porch, entry, and side gates secured</label>
+            <label><input type="checkbox" name="away" value="Garden & lawn quick health check"> Garden & lawn quick health check</label>
+          </div>
+          <div class="card">
+            <h3>Interior Presence</h3>
+            <label><input type="checkbox" name="away" value="Walk-through of key rooms for leaks, drafts, and alarms" checked> Walk-through of key rooms for leaks, drafts, and alarms</label>
+            <label><input type="checkbox" name="away" value="Windows latched; blinds and lights set for occupancy" checked> Windows latched; blinds and lights set for occupancy</label>
+            <label><input type="checkbox" name="away" value="Appliance check (fridge hum, stovetop off, hot water ok)"> Appliance check (fridge hum, stovetop off, hot water ok)</label>
+          </div>
+          <div class="card">
+            <h3>Plants & Mail</h3>
+            <label><input type="checkbox" name="away" value="Indoor plant watering as instructed" checked> Indoor plant watering as instructed</label>
+            <label><input type="checkbox" name="away" value="Mail, parcels, and junk removed from letterbox" checked> Mail, parcels, and junk removed from letterbox</label>
+            <label><input type="checkbox" name="away" value="Deliveries placed where you specify"> Deliveries placed where you specify</label>
+          </div>
+          <div class="card">
+            <h3>Security & Reporting</h3>
+            <label><input type="checkbox" name="away" value="Alarm armed/disarmed per schedule" checked> Alarm armed/disarmed per schedule</label>
+            <label><input type="checkbox" name="away" value="Meter readings & utility anomalies noted"> Meter readings & utility anomalies noted</label>
+            <label><input type="checkbox" name="away" value="Weekly WhatsApp photo report with notes" checked> Weekly WhatsApp photo report with notes</label>
+          </div>
+          <div class="card">
+            <h3>Your extras</h3>
+            <textarea id="customAway" placeholder="Add up to 4 items, separated by commas or new lines"></textarea>
+          </div>
+        </div>
+
+        <label>Coverage</label>
+        <select id="coverageAway">
+          <option value="Exterior presence only">Exterior presence only</option>
+          <option value="Interior + exterior (full peace of mind)" selected>Interior + exterior (full peace of mind)</option>
+        </select>
+      </div>
+
       <!-- Controls shared -->
       <label style="margin-top:12px">Visit window</label>
       <select id="window">
@@ -163,15 +205,21 @@
     document.getElementById('preWa').href = waLink('Additional checks I would like to add:');
 
     function switchTab(which){
-      const isAir = which === 'airbnb';
-      document.getElementById('panel-airbnb').hidden = !isAir;
-      document.getElementById('panel-body').hidden = isAir;
-      document.getElementById('tab-airbnb').setAttribute('aria-selected', isAir ? 'true' : 'false');
-      document.getElementById('tab-body').setAttribute('aria-selected', isAir ? 'false' : 'true');
+      ['airbnb','body','absentee'].forEach(id=>{
+        const active = id === which;
+        document.getElementById(`panel-${id}`).hidden = !active;
+        document.getElementById(`tab-${id}`).setAttribute('aria-selected', active ? 'true' : 'false');
+      });
       // reset preview/buttons
       document.getElementById('preview').value='';
       document.getElementById('waSend').style.display='none';
       document.getElementById('emailSend').style.display='none';
+    }
+
+    function activeTab(){
+      if(!document.getElementById('panel-airbnb').hidden) return 'airbnb';
+      if(!document.getElementById('panel-body').hidden) return 'body';
+      return 'absentee';
     }
 
     function collectChecked(nameAttr){
@@ -185,20 +233,28 @@
     }
 
     function generateTemplate(){
-      const isAir = document.getElementById('panel-airbnb').hidden === false;
+      const current = activeTab();
       const windowSel = document.getElementById('window').value;
       let lines = [];
-      if(isAir){
+      let header = '';
+      if(current === 'airbnb'){
         lines = collectChecked('air');
         addCustom('customAir', lines);
-      }else{
+        header = 'Boots on Ground — Airbnb Guest-Ready Template';
+      }else if(current === 'body'){
         lines = collectChecked('body');
         addCustom('customBody', lines);
         const freq = document.getElementById('freqBody').value;
         lines.unshift(`• Frequency: ${freq}`);
+        header = 'Boots on Ground — Apartments / Body Corporate Template';
+      }else{
+        lines = collectChecked('away');
+        addCustom('customAway', lines);
+        const coverage = document.getElementById('coverageAway').value;
+        lines.unshift(`• Coverage: ${coverage}`);
+        header = 'Boots on Ground — Absentee Owner Template';
       }
       const top = lines.slice(0,10);
-  const header = isAir ? 'Boots on Ground — Airbnb Guest-Ready Template' : 'Boots on Ground — Apartments / Body Corporate Template';
       const text = `${header}\nVisit window: ${windowSel}\n\n${top.join('\n')}\n\nReport: Weekly WhatsApp photos and notes.\nNote: Additional checks are welcome if sent via WhatsApp prior to the visit.`;
 
       document.getElementById('preview').value = text;
@@ -228,6 +284,7 @@
     }
     enforceMax('air',10);
     enforceMax('body',10);
+    enforceMax('away',10);
   </script>
 </body>
 </html>
